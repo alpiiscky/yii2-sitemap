@@ -1,0 +1,21 @@
+{
+    "name": "alpiiscky/yii2-sitemap",
+    "description": "Генерация Sitemap по крону",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension"," sitemap"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Дмитрий",
+            "email": "akhmetov.dy@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "alpiiscky\\sitemap\\": ""
+        }
+    }
+}
