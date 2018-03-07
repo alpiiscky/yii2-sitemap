@@ -2,30 +2,58 @@ Yii2 sitemap
 ============
 Генерация Sitemap по крону
 
-Installation
+Установка
 ------------
 
-The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
-
-Either run
-
+Выполнить
 ```
-php composer.phar require --prefer-dist alpiiscky/yii2-sitemap "*"
+composer require --prefer-dist alpiiscky/yii2-sitemap "*"
 ```
 
-or add
+или добавить
 
 ```
 "alpiiscky/yii2-sitemap": "*"
 ```
 
-to the require section of your `composer.json` file.
+в `composer.json`.
 
 
-Usage
+Настройка
 -----
 
-Once the extension is installed, simply use it in your code by  :
+Добавить в раздел `components` файла `console.php`:
 
 ```php
-<?= \alpiiscky\sitemap\AutoloadExample::widget(); ?>```
+'sitemap' => [
+    'class' => 'alpiiscky\sitemap\components\SitemapComponent',
+    'filename' => 'sitemapi.xml',
+    'basePath' => '@webroot',
+    'siteUrl' => 'http://<домен>'
+],
+```
+
+Создать в папке `commands` контроллер. Массив `$items` заполняется по циклам
+```php
+<?php
+
+namespace app\commands;
+
+use yii\console\Controller;
+use Yii;
+
+class SitemapController extends Controller
+{
+    public function actionIndex()
+    {
+        $sitemap = Yii::$app->sitemap;
+
+        $items = [
+            ['loc' => 'ef', 'changefreq' => 'weekly', 'priority' => 0.5],
+        ];
+
+        $sitemap->add($items);
+        $sitemap->render();
+    }
+}
+```
