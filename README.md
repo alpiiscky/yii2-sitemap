@@ -27,7 +27,7 @@ composer require --prefer-dist alpiiscky/yii2-sitemap "*"
 ```php
 'sitemap' => [
     'class' => 'alpiiscky\sitemap\components\SitemapComponent',
-    'filename' => 'sitemapi.xml',
+    'filename' => 'sitemap.xml',
     'basePath' => '@webroot',
     'siteUrl' => 'http://<домен>'
 ],
